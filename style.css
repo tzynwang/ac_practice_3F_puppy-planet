@@ -1,0 +1,369 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700&display=swap&subset=chinese-traditional");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f6f7f8;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto 3rem;
+}
+
+/* 按鈕 */
+.action {
+  display: inline-block;
+  margin-top: .5rem;
+  padding: .5rem 1.5rem;
+  border-radius: .5rem;
+  background-color: #39bae6;
+  color: #fff;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+  transition: .2s;
+}
+
+.action:hover {
+  background-color: #267c99;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+  /* 
+  box-shadow與filter: drop-shadow()的差異
+  http://thenewcode.com/598/box-shadow-property-vs-drop-shadow-filter-a-complete-comparison
+  */
+  text-align: center;
+}
+
+.navbar-brand {
+  line-height: 60px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #267b98;
+}
+
+.navbar-toggle {
+  position: fixed;
+  top: -100px;
+  right: -100px;
+}
+
+.navbar-toggle-label {
+  position: absolute;
+  top: 50%;
+  right: 7.5%;
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.hamburger::before {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  content: '';
+  background-size: 36px 36px;
+  background-image: url('./images/list.svg');
+  background-repeat: no-repeat;
+  transition: background-image .2s;
+}
+
+.navbar-toggle:checked~.nav {
+  transform: scale(1, 1);
+}
+
+.navbar-toggle:checked~.nav .nav-list {
+  opacity: 1;
+}
+
+.navbar-toggle:checked~.navbar-toggle-label .hamburger::before {
+  background-image: url('./images/cross.svg');
+}
+
+.nav {
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: .2s;
+}
+
+.nav-list {
+  opacity: 0;
+  transition: .2s;
+}
+
+.nav-item {
+  margin: 1rem auto;
+}
+
+.nav-link {
+  color: #267b98;
+}
+
+.activity {
+  position: relative;
+  padding-top: 96px;
+}
+
+.banner-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 250px);
+  grid-template-areas:
+    "main main main main"
+    "left left right right";
+  gap: .5rem;
+}
+
+.main-banner,
+.sub-banner-left,
+.sub-banner-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  align-items: flex-end;
+  background-position: center center;
+  background-repeat: none;
+  background-size: cover;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+}
+
+.main-banner {
+  grid-area: main;
+  background-image: url("./images/main_background.jfif");
+}
+
+.sub-banner-left {
+  grid-area: left;
+  background-image: url("./images/left_background.jfif");
+}
+
+.sub-banner-right {
+  grid-area: right;
+  background-image: url("./images/right_background.jfif");
+}
+
+.main-banner .banner-title {
+  font-size: 2.5rem;
+  color: #1a5366;
+}
+
+.main-banner .banner-description {
+  font-size: 1.5rem;
+  color: #267b98;
+}
+
+.sub-banner .banner-title {
+  font-size: 1.75rem;
+  color: #fff;
+}
+
+.sub-banner .banner-description {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.album-wrapper {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: .5rem;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  transition: .25s ease-out .1s;
+}
+
+.card::before {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: scale(0, 1);
+}
+
+.card:hover::before {
+  transform: scale(1.05, 1);
+}
+
+.card::after {
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  transform: scale(1, 0);
+}
+
+.card:hover::after {
+  transform: scale(1, 1.05);
+}
+
+.card-img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  opacity: 0.4;
+  transition: .2s;
+}
+
+.card-text {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: .5rem 0;
+  background-color: rgba(0, 0, 0, .4);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: .2s;
+}
+
+.card:hover .card-img,
+.card:hover .card-text {
+  opacity: 1;
+}
+
+.adoption-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 180px;
+  grid-template-areas:
+    "image image"
+    "info info";
+}
+
+.adoption-image {
+  grid-area: image;
+}
+
+.adoption-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.adoption-info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+}
+
+.adoption-info .title {
+  color: #267c99;
+  font-size: 2.5rem;
+}
+
+.adoption-info .description {
+  margin: .5rem 0;
+  padding: 0 1rem;
+  font-size: 1.25rem;
+}
+
+footer {
+  width: 100%;
+  height: 48px;
+  background-color: #4a4a4a;
+  text-align: center;
+}
+
+footer p {
+  line-height: 48px;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+
+  .navbar-toggle,
+  .navbar-toggle-label {
+    display: none;
+  }
+
+  .nav,
+  .nav-list,
+  .nav-item {
+    all: unset;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .navbar-brand {
+    grid-column: 2 / 3;
+  }
+
+  .nav {
+    grid-column: 3 / 4;
+  }
+
+  .nav-list {
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .nav-item+.nav-item {
+    margin-left: 2rem;
+  }
+
+  .banner-wrapper {
+    grid-template-areas:
+      "main main main left"
+      "main main main right";
+  }
+
+  .adoption-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 180px;
+    grid-template-areas:
+      "image info"
+      "image info";
+  }
+}
